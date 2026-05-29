@@ -12,6 +12,7 @@ class AgentState(TypedDict):
 llm = ChatOpenAI(model="gpt-4o")
 
 def process(state: AgentState) -> AgentState:
+    """This node will solve the request you input"""
     response = llm.invoke(state["messages"])
     state["messages"].append(response)
     print(f"\nAI: {response.content}")
